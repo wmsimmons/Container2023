@@ -102,7 +102,36 @@ When the window opens it will be a UI with a text "Welcome to Cypress" > E2E Tes
 
 ## Test Coverage
 
-Test coverage can easily be generated using a native Cypress utility called @cypress/code-coverage also be viewed using the "npx nyc report --reporter=text-summary" command, which will show columns for file names, statement percentage, branch, functionality, and line percentages, the coverage percentage is displayed under the columns of the output. It also has a column for uncovered functionality. Here are some commands that can be used to view the test coverage from different aspects.
+Test coverage can easily be generated using a native Cypress utility called @cypress/code-coverage also be viewed using the "npx nyc report --reporter=text-summary" command, which will show columns for file names, statement percentage, branch, functionality, and line percentages, the coverage percentage is displayed under the columns of the output. It also has a column for uncovered functionality. Here are some commands that can be used to view the test coverage from different aspects. The follow prerequisites must be met before this utility will function properly:
+
+•	npm package installs (-D option for nyc, ansi-regex)
+•	A process called “instrumenting the code” takes place by use of a npm package called “nyc”, which analyzes the code, this utility takes some time and should run without error, or else Cypress will throw a message in the UI under After All and Before All (in the test panel window) asking if the instrumentation was ever performed, in this case, just go back to the directory of the /src/ folder (outside of it, not in the folder) and run “npm install nyc” again, as the first install can result in errors that keep it from continuing.
+•	There must be a folder entitled /src on the main level of the application for the instrumentor to work. For simplicity, this solution was restructured to fit the requirements of nyc. The website/container functionality for the was placed (at the time of this writing) into a /src folder with /node_modules [as npm looks for this module to install it] on the outside and the tests and solution documentation on the same level as /src.
+•	The cypress/support/e2e.js (an auto-generated file when a Cypress solution is created) must have the following placed into it:
+```md
+npm install -D @cypress/code-coverage
+```
+•	The cypress.config.js or cypress.config.ts also uses the following require statement to add the code-coverage package to Cypress
+```md
+const { defineConfig } = require('cypress')
+
+module.exports = defineConfig({
+  // setupNodeEvents can be defined in either
+  // the e2e or component configuration
+  e2e: {
+    setupNodeEvents(on, config) {
+      require('@cypress/code-coverage/task')(on, config)
+      // include any other plugin code...
+
+      // It's IMPORTANT to return the config object
+      // with any changed environment variables
+      return config
+    },
+  },
+})
+```
+To view a pretty, human-consumible report, open up /tests/coverage/lcov-report/index.html (generated after a Cypress test run) in any browser and view the report for more details and even a chart to display the test coverage rate alongside the coverage percentage.
+
 
 ```md
 $ npm install @cypress/code-coverage

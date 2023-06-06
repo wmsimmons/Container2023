@@ -5,6 +5,7 @@ of tests for it, hosted on a Python 3.9 Flask development web server in a Docker
 ## Table of Contents
 
 * [Installation](#installation)
+    * [Setting up Cypress tests](#Setting up Cypress Tests)
 * [Usage](#usage)
 * [Features](#features)
 * [Testing](#testing)
@@ -47,7 +48,7 @@ docker: Error response from daemon: driver failed programming external connectiv
 
 You can now open up any browser and visit "localhost:5000" to see the website or "localhost:5000/resume" for the API.
 
-# Setting up Cypress tests
+### Setting up Cypress tests
 If Cypress is not set on your machine, then the NPM .msi file can be downloaded from Cypress' CDN > click the node-v[num]-x64, and that will kick off the install, it will take around 10-20 minutes to complete. After NPM/Node finishes, run
 ```md
 npm --version" and "npx --version

@@ -7,7 +7,7 @@ of tests for it, hosted on a Python 3.9 Flask development web server in a Docker
 * [Installation](#installation)
 * [Usage](#usage)
 * [Features](#features)
-* [Tests](#tests)
+* [Testing](#testing)
 * Test Coverage [last page below]
 
 Cancel changes
@@ -85,6 +85,8 @@ run a docker run -p 5000:5000 -d <container_name>
 ```
 command in the repository of the cloned solution, a long alphanumeric string will generate as the output. If Docker Desktop is installed on your machine, open that and click Containers > Status (it should say Running) to confirm that the container is on. At this point, it should be possible to open any browser and visit "localhost:5000" to visit the UI, or "localhost:5000/resume" to see the API.
 
+See Testing for more detailed instructions about executing the Cypress test suite.
+
 
 ## Features
 
@@ -94,7 +96,7 @@ command in the repository of the cloned solution, a long alphanumeric string wil
 - Apache2 web server integration was attempted with Flask but due to various errors and configuration issues on Ubuntu with the wsgi and app configuration variables and limitations of Alpine Linux combined with scarce documentation of Alpine Linux error handling, this portion will be released at a later time. However, a WSGI server configuration, app configuration file (+ a python VM) docker-compose.yml (file containing connection strings for servers that Docker reads), and a couple more binding actions are required to integrate a Flask app together with Apache2 and Docker. Those changes can be found in the /apache2_stuff
 
 
-## Tests
+## Testing
 
 The tests are Cypress-based, and can be run by using the command below for opening Cypress. Results can be displayed using the UI of Cypress after a test run concludes. If Cypress is not set on your machine, then instructions can be found in the Setting up Cypress tests section. To open Cypress for the first time, navigate to the /tests directory [cd /tests] and use the command:
 

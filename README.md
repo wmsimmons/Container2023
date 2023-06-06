@@ -73,7 +73,9 @@ Test coverage can easily be generated using a native Cypress utility called @cyp
 
  just displays the coverage summary
 $ npx nyc report --reporter=text-summary
+
  displays the coverage file by file
 $ npx nyc report --reporter=text
+
  shows coverage up to line specified after the params for --lines
 npx nyc report --check-coverage --lines 80

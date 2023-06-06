@@ -15,7 +15,13 @@ of tests for it, hosted on a Flask development web server in a container. The so
 
 *Note: Important to always check the directory before executing any command, if at any point something does not work, throws an error or isn't there when you think it should be, then check the directory before next run, or re-run your command (if you're sure it's safe to rerun) in the desired/correct directory. 
 
-To get the solution up and running, it is assumed as a prerequiste after cloning (i.e. "git clone <username:personal_access_token_pwd@git-clone-link.git") that the Windows machine is of one of the latest versions with wsl, or the Linux-like shell. If "docker --version" does not output a version number, then wsl may not be on your machine. Try
+To get the solution up and running, it is assumed as a prerequiste after cloning (i.e. "git clone <username:personal_access_token_pwd@git-clone-link.git")
+```mds
+# something like ..
+git clone <username:personal_access_token_pwd@git-clone-link.git
+```
+
+that the Windows machine is of one of the latest versions with wsl, or the Linux-like shell. If "docker --version" does not output a version number, then wsl may not be on your machine. Try
 ```md
 # type into a Windows cmd terminal
 "wsl --install"

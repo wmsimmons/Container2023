@@ -4,6 +4,7 @@
     "eslint-plugin-cypress": "^2.13.3"
   },
   "dependencies": {
+    "@cypress/code-coverage": "^3.10.7",
     "cypress-xpath": "^2.0.1",
     "ts-node": "^10.9.1"
   }

@@ -1,21 +1,24 @@
 import json
+from datetime import datetime
 
 from flask import Flask, render_template, jsonify
 
 import oyaml as yaml
 
-align_resume_app = Flask(__name__, template_folder="./templates")
-align_resume_app.config['JSON_SORT_KEYS'] = False
+app = Flask(__name__, template_folder="./templates")
+app.config['JSON_SORT_KEYS'] = False
 
 
-@align_resume_app.route('/')
+@app.route('/')
 def index():
+    #and the access its now method simpler
+    d1 = str(datetime.now())
     website_data = yaml.safe_load(open('_config.yaml'))
 
-    return render_template("index.html", data=website_data)
+    return render_template("index.html", data=website_data, value = d1)
 
 
-@align_resume_app.route('/resume', methods=['GET'])
+@app.route('/resume', methods=['GET'])
 def get_all_words():
     source_file = 'resume.json'
 
@@ -25,4 +28,4 @@ def get_all_words():
 
 
 if __name__ == '__main__':
-    align_resume_app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", debug=True, port=5000)

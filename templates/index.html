@@ -4,9 +4,6 @@
 <head>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="A simple resume template built with Flask, based on Start Bootstrap resume template.">
-  <meta name="author" content="Rodolfo Ferro <rodolfoferroperez@gmail.com>">
 
   <title>Portfolio - {{ data.profile.first_name }} {{ data.profile.last_name }}</title>
 
@@ -58,6 +55,8 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
       <div class="w-100">
+
+        <h5>{{ url_for('static', filename=value) }}</h5>
         <h1 class="mb-0">{{ data.profile.first_name }}
           <span class="text-primary">{{ data.profile.last_name }}</span>
         </h1>
@@ -166,4 +165,3 @@
 </body>
 
 </html>
-

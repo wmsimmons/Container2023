@@ -8,7 +8,7 @@ of tests for it, hosted on a Flask development web server in a container. The so
 * [Usage](#usage)
 * [Features](#features)
 * [Tests](#tests)
-* [Test Coverage](#"Test Coverage")
+* Test Coverage [last page below]
 
 
 ## Installation

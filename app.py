@@ -10,7 +10,7 @@ align_resume_app.config['JSON_SORT_KEYS'] = False
 
 @align_resume_app.route('/')
 def index():
-    website_data = yaml.load(open('_config.yaml'))
+    website_data = yaml.safe_load(open('_config.yaml'))
 
     return render_template("index.html", data=website_data)
 

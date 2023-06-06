@@ -37,7 +37,13 @@ Upon cloning the repo, it is now time to build the Flask container so the websit
 ```md
 "docker run -p 5000:5000 -d <container_name>"
 ```
-(where <container_name> is the same as <desired_name_for_container>) to start it on port (-p) 5000, and the container (i.e. flask_docker) will run as a detached process within the container (functionality of -d). 
+(where <container_name> is the same as <desired_name_for_container>) to start it on port (-p) 5000, and the container (i.e. flask_docker) will run as a detached process within the container (functionality of -d). IF you get the following error, unbind the port, or stop whichever container is occupying that port. 
+
+```md
+PS C:\Users\who\Container2023> docker run -p 5000:5000 -d ultimate_test
+4ebc537e9dd47fd749683aa4403995a91a88832d67441e3601de11b3b3540444
+docker: Error response from daemon: driver failed programming external connectivity on endpoint elated_ramanujan (4fa99ae0382bbf406458c28e60fc5533d0d9d76491badb8a4cdf6a3d29e2a447): Bind for 0.0.0.0:5000 failed: port is already allocated.
+```
 
 You can now open up any browser and visit "localhost:5000" to see the website or "localhost:5000/resume" for the API.
 

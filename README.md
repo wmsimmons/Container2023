@@ -61,7 +61,7 @@ The tests are Cypress-based, and can be run by using the run_automation.sh. Resu
 
 "npx cypress open"
 
-, as the "./node_modules/.bin/cypress open" command recommended by Cypress documentation can result in a "..\cypress.ps1 is not digitally signed. You cannot run this script on the current system" error when run on Windows.
+.., as the "./node_modules/.bin/cypress open" command recommended by Cypress documentation can result in a "..\cypress.ps1 is not digitally signed. You cannot run this script on the current system" error when run on Windows.
 
 When the window opens it will be a UI with a text "Welcome to Cypress" > E2E Testing > Firefox (v108) > Start E2E Testing in Firefox > and at this point there should be two spec files, click on either to run the test.
 
@@ -71,9 +71,9 @@ When the window opens it will be a UI with a text "Welcome to Cypress" > E2E Tes
 
 Test coverage can easily be generated using a native Cypress utility called @cypress/code-coverage also be viewed using the "npx nyc report --reporter=text-summary" command, which will show columns for file names, statement percentage, branch, functionality, and line percentages, the coverage percentage is displayed under the columns of the output. It also has a column for uncovered functionality. Here are some commands that can be used to view the test coverage from different aspects.
 
-# just displays the coverage summary
+ just displays the coverage summary
 $ npx nyc report --reporter=text-summary
-# displays the coverage file by file
+ displays the coverage file by file
 $ npx nyc report --reporter=text
-# shows coverage up to line specified after the params for --lines
+ shows coverage up to line specified after the params for --lines
 npx nyc report --check-coverage --lines 80

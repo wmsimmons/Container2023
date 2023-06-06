@@ -1,6 +1,6 @@
 ## The Repository
 This repository is a single-page website to demonstrate resume data, a simple API, a small suite
-of tests for it, hosted on a Flask development web server in a container. The source code is available to anyone under the standard MIT license.
+of tests for it, hosted on a Python 3.9 Flask development web server in a Docker container and a small, customized Cypress test suite. The source code is available to anyone under the standard MIT license.
 
 ## Table of Contents
 

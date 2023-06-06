@@ -13,6 +13,8 @@ of tests for it, hosted on a Flask development web server in a container. The so
 
 ## Installation
 
+*Note: Important to always check the directory before executing any command, if at any point something does not work, throws an error or isn't there when you think it should be, then check the directory before next run, or re-run your command (if you're sure it's safe to rerun) in the desired/correct directory. 
+
 To get the solution up and running, it is assumed as a prerequiste that the Windows machine is of one of the latest versions with wsl, or the Linux-like shell. If "docker --version" does not output a version number, then wsl may not be on your machine. Try
 ```md
 # type into a Windows cmd terminal
@@ -22,14 +24,16 @@ and then trying to use
 ```md
 "docker image build -t <desired_name_for_container> ."
 ```
-in the directory of the cloned repository.
+in the directory of the cloned repository, be sure to change directory (cd) into /src/, as that is where the Dockerfile and website application code live. It cannot compile without that Dockerfile.
 
 
-Upon cloning, it is now time to build the container, this process will compile the files into a sort of invisible background operating system running our application. The Docker build command will set up the website (UI-based), and API in the container, and allow for the website (server?) to be started via a docker run. Performing a docker run after build completion will create access to the application through "localhost:5000" and "localhost:5000/resume" for the UI and API, respectively. To confirm that the container built properly and that the website renders okay without template errors, run a
+Upon cloning the repo, it is now time to build the Flask container so the website can run, this process will compile the files into a sort of headless background operating system running our application. The Docker build command will set up the website (UI-based), and API in the container, and allow for the website (server?) to be served via a docker run. Performing a docker run after build completion will create access to the application through "localhost:5000" and "localhost:5000/resume" for the UI and API, respectively. To confirm that the container built properly and that the website renders okay without template errors, run a
 ```md
 "docker run -p 5000:5000 -d <container_name>"
 ```
-(where <container_name> is the same as <desired_name_for_container>) to start it on port (-p) 5000, and the container (i.e. flask_docker) will run as a detached process within the container (functionality of -d).
+(where <container_name> is the same as <desired_name_for_container>) to start it on port (-p) 5000, and the container (i.e. flask_docker) will run as a detached process within the container (functionality of -d). 
+
+You can now open up any browser and visit "localhost:5000" to see the website or "localhost:5000/resume" for the API.
 
 # Setting up Cypress tests
 If Cypress is not set on your machine, then the NPM .msi file can be downloaded from Cypress' CDN > click the node-v[num]-x64, and that will kick off the install, it will take around 10-20 minutes to complete. After NPM/Node finishes, run
@@ -63,27 +67,24 @@ Testing instructions can be found in the Testing section.
 
 ## Usage 
 
-Once everything is set up through docker,
+Once everything is set up through docker for the web application, issue the following:
 ```md
 "run a docker run -p 5000:5000 -d <container_name>" 
 ```
 command in the repository of the cloned solution, a long alphanumeric string will generate as the output. If Docker Desktop is installed on your machine, open that and click Containers > Status (it should say Running) to confirm that the container is on. At this point, it should be possible to open any browser and visit "localhost:5000" to visit the UI, or "localhost:5000/resume" to see the API.
 
-```md
-!
-```
 
 ## Features
 
-- Cypress Test suite
+- Cypress Test suite with ability to generate coverage report 
 - Flask application in a docker container [on native Flask development web server]
+- API within flask
 - Apache2 web server integration was attempted with Flask but due to various errors and configuration issues on Ubuntu with the wsgi and app configuration variables and limitations of Alpine Linux combined with scarce documentation of Alpine Linux error handling, this portion will be released at a later time. However, a WSGI server configuration, app configuration file (+ a python VM) docker-compose.yml (file containing connection strings for servers that Docker reads), and a couple more binding actions are required to integrate a Flask app together with Apache2 and Docker. Those changes can be found in the /apache2_stuff
 
 
 ## Tests
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them.
-The tests are Cypress-based, and can be run by using the command below for opening Cypress. Results can be displayed using the "" command. If Cypress is not set on your machine, then instructions can be found in the Setting up Cypress tests section. To open Cypress for the first time, navigate to the /tests directory [cd /tests] and use the command:
+The tests are Cypress-based, and can be run by using the command below for opening Cypress. Results can be displayed using the UI of Cypress after a test run concludes. If Cypress is not set on your machine, then instructions can be found in the Setting up Cypress tests section. To open Cypress for the first time, navigate to the /tests directory [cd /tests] and use the command:
 
 ```md
 # opens Cypress UI

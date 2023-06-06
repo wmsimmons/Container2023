@@ -18,7 +18,7 @@ of tests for it, hosted on a Flask development web server in a container. The so
 To get the solution up and running, it is assumed as a prerequiste after cloning (i.e. "git clone <username:personal_access_token_pwd@git-clone-link.git")
 ```mds
 # something like ..
-git clone <https://username:personal_access_token_pwd@git-clone-link.git
+git clone <https:/..@git-clone-link.git>
 ```
 
 that the Windows machine is of one of the latest versions with wsl, or the Linux-like shell. If "docker --version" does not output a version number, then wsl may not be on your machine. Try

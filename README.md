@@ -105,6 +105,19 @@ When the window opens it will be a UI with a text "Welcome to Cypress" > E2E Tes
 Test coverage can easily be generated using a native Cypress utility called @cypress/code-coverage also be viewed using the "npx nyc report --reporter=text-summary" command, which will show columns for file names, statement percentage, branch, functionality, and line percentages, the coverage percentage is displayed under the columns of the output. It also has a column for uncovered functionality. Here are some commands that can be used to view the test coverage from different aspects.
 
 ```md
+$ npm install @cypress/code-coverage
+
+# expected output
+
+added 319 packages, removed 266 packages, and audited 579 packages in 16s
+
+76 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+```
+
+```md
 # just displays the coverage summary
 $ npx nyc report --reporter=text-summary
 ```

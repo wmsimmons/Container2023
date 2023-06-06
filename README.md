@@ -30,7 +30,7 @@ and then trying to use
 ```md
 "docker image build -t <desired_name_for_container> ."
 ```
-in the directory of the cloned repository, be sure to change directory (cd) into /src/, as that is where the Dockerfile and website application code live. It cannot compile without that Dockerfile.
+in the directory of the cloned repository, be sure to change directory (cd) into /src/, as that is where the Dockerfile and website application code live. It cannot compile without that Dockerfile. The docker job will likely take around a minute or two to finish, as there are many node_modules for Cypress, @cypress/code-coverage and other components.
 
 
 Upon cloning the repo, it is now time to build the Flask container so the website can run, this process will compile the files into a sort of headless background operating system running our application. The Docker build command will set up the website (UI-based), and API in the container, and allow for the website (server?) to be served via a docker run. Performing a docker run after build completion will create access to the application through "localhost:5000" and "localhost:5000/resume" for the UI and API, respectively. To confirm that the container built properly and that the website renders okay without template errors, run a

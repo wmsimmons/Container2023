@@ -5,7 +5,7 @@ of tests for it, hosted on a Python 3.9 Flask development web server in a Docker
 ## Table of Contents
 
 * [Installation](#installation)
-    * [Setting up Cypress tests](#Setting up Cypress Tests)
+    * Setting up Cypress tests
 * [Usage](#usage)
 * [Features](#features)
 * [Testing](#testing)
@@ -91,10 +91,10 @@ See Testing for more detailed instructions about executing the Cypress test suit
 
 ## Features
 
-- Cypress Test suite with ability to generate coverage report 
+- Cypress Test suite with ability to generate coverage report via @cypress/code-coverage and nyc 
 - Flask application in a docker container [on native Flask development web server]
-- API within flask
-- Apache2 web server integration was attempted with Flask but due to various errors and configuration issues on Ubuntu with the wsgi and app configuration variables and limitations of Alpine Linux combined with scarce documentation of Alpine Linux error handling, this portion will be released at a later time. However, a WSGI server configuration, app configuration file (+ a python VM) docker-compose.yml (file containing connection strings for servers that Docker reads), and a couple more binding actions are required to integrate a Flask app together with Apache2 and Docker. Those changes can be found in the /apache2_stuff
+- API within Flask
+- Incomplete Apache2 web server integration was attempted with Flask but due to various errors and configuration issues on Ubuntu with the wsgi and app configuration variables and limitations of Alpine Linux combined with scarce documentation of Alpine Linux error handling, this portion will be released at a later time. However, a WSGI server configuration, app configuration file (+ a python VM) docker-compose.yml (file containing connection strings for servers that Docker reads), and a couple more binding actions are required to integrate a Flask app together with Apache2 and Docker. Those changes can be found in the /apache2_stuff, if interested in seeing more.
 
 
 ## Testing
@@ -112,13 +112,17 @@ npx cypress open
 ```
 command recommended by Cypress documentation can result in a "..\cypress.ps1 is not digitally signed. You cannot run this script on the current system" error when run on Windows.
 
-When the window opens it will be a UI with a text "Welcome to Cypress" > E2E Testing > Firefox (v108) > Start E2E Testing in Firefox > and at this point there should be two spec files, click on either to run the test.
+When the window opens it will be a UI with a text "Welcome to Cypress" > E2E Testing > Firefox (v108) your desired browser > Start E2E Testing in Firefox > and at this point there should be two spec files, click on either to run the test.
 
 
 
 ## Test Coverage
 
-Test coverage can easily be generated using a native Cypress utility called @cypress/code-coverage also be viewed using the "npx nyc report --reporter=text-summary" command, which will show columns for file names, statement percentage, branch, functionality, and line percentages, the coverage percentage is displayed under the columns of the output. It also has a column for uncovered functionality. Here are some commands that can be used to view the test coverage from different aspects. The follow prerequisites must be met before this utility will function properly:
+Test coverage can easily be generated using a native Cypress utility called @cypress/code-coverage or can also be viewed using the 
+```md
+npx nyc report --reporter=text-summary
+```
+command, which will show the output in columns for file names, statement percentage, branch, functionality, and line percentages, the coverage percentage the columns of the output. It also has a column for uncovered functionality. Here are some commands that can be used to view the test coverage from different aspects. The follow prerequisites must be met before this utility will function properly:
 
 •	npm package installs (-D option for nyc, ansi-regex)
 •	A process called “instrumenting the code” takes place by use of a npm package called “nyc”, which analyzes the code, this utility takes some time and should run without error, or else Cypress will throw a message in the UI under After All and Before All (in the test panel window) asking if the instrumentation was ever performed, in this case, just go back to the directory of the /src/ folder (outside of it, not in the folder) and run “npm install nyc” again, as the first install can result in errors that keep it from continuing.

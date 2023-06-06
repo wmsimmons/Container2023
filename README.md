@@ -24,18 +24,18 @@ git clone <https:/..@git-clone-link.git>
 that the Windows machine is of one of the latest versions with wsl, or the Linux-like shell. If "docker --version" does not output a version number, then wsl may not be on your machine. Try
 ```md
 # type into a Windows cmd terminal
-"wsl --install"
+wsl --install
 ```
 and then trying to use
 ```md
-"docker image build -t <desired_name_for_container> ."
+docker image build -t <desired_name_for_container> .
 ```
 in the directory of the cloned repository, be sure to change directory (cd) into /src/, as that is where the Dockerfile and website application code live. It cannot compile without that Dockerfile. The docker job will likely take around a minute or two to finish, as there are many node_modules for Cypress, @cypress/code-coverage and other components.
 
 
 Upon cloning the repo, it is now time to build the Flask container so the website can run, this process will compile the files into a sort of headless background operating system running our application. The Docker build command will set up the website (UI-based), and API in the container, and allow for the website (server?) to be served via a docker run. Performing a docker run after build completion will create access to the application through "localhost:5000" and "localhost:5000/resume" for the UI and API, respectively. To confirm that the container built properly and that the website renders okay without template errors, run a
 ```md
-"docker run -p 5000:5000 -d <container_name>"
+docker run -p 5000:5000 -d <container_name>
 ```
 (where <container_name> is the same as <desired_name_for_container>) to start it on port (-p) 5000, and the container (i.e. flask_docker) will run as a detached process within the container (functionality of -d). IF you get the following error, unbind the port, or stop whichever container is occupying that port. 
 
@@ -50,13 +50,13 @@ You can now open up any browser and visit "localhost:5000" to see the website or
 # Setting up Cypress tests
 If Cypress is not set on your machine, then the NPM .msi file can be downloaded from Cypress' CDN > click the node-v[num]-x64, and that will kick off the install, it will take around 10-20 minutes to complete. After NPM/Node finishes, run
 ```md
-"npm --version" and "npx --version"
+npm --version" and "npx --version
 ```
 to verify that Node.JS was installed properly. 
 
 To install Cypress from Node, insert the following
 ```md
-"npm install cypress --save dev"
+npm install cypress --save dev
 ```
 
 Output should be similar to:
@@ -81,7 +81,7 @@ Testing instructions can be found in the Testing section.
 
 Once everything is set up through docker for the web application, issue the following:
 ```md
-"run a docker run -p 5000:5000 -d <container_name>" 
+run a docker run -p 5000:5000 -d <container_name>
 ```
 command in the repository of the cloned solution, a long alphanumeric string will generate as the output. If Docker Desktop is installed on your machine, open that and click Containers > Status (it should say Running) to confirm that the container is on. At this point, it should be possible to open any browser and visit "localhost:5000" to visit the UI, or "localhost:5000/resume" to see the API.
 
@@ -105,7 +105,7 @@ npx cypress open
 
 .., as the
 ```md
-"./node_modules/.bin/cypress open"
+./node_modules/.bin/cypress open
 ```
 command recommended by Cypress documentation can result in a "..\cypress.ps1 is not digitally signed. You cannot run this script on the current system" error when run on Windows.
 
